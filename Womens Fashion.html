@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Fashion - Yabie Premium</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI', sans-serif;
+        }
+
+        body{
+            background:#f8f9fa;
+            color:#333;
+        }
+
+        .container{
+            width:90%;
+            margin:auto;
+            max-width:1200px;
+        }
+
+        /* Header */
+        header{
+            background:#fff;
+            padding:15px 0;
+            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+
+        .header-flex{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        nav ul{
+            list-style:none;
+            display:flex;
+            gap:25px;
+        }
+        nav a{
+            text-decoration:none;
+            color:#444;
+            font-weight:500;
+        }
+        nav a:hover{
+            color:#6a11cb;
+        }
+
+        .logo{
+            font-size:22px;
+            font-weight:700;
+            background:linear-gradient(135deg,#6a11cb,#2575fc);
+            -webkit-background-clip:text;
+            color:transparent;
+        }
+
+       
+        .hero{
+            background:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1350&q=80');
+            height:350px;
+            background-size:cover;
+            background-position:center;
+            position:relative;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            color:white;
+        }
+
+        .hero h1{
+            font-size:48px;
+            background:rgba(0,0,0,0.5);
+            padding:10px 25px;
+            border-radius:10px;
+        }
+
+       
+        .section-title{
+            text-align:center;
+            margin:50px 0 20px;
+        }
+
+        .category-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:25px;
+        }
+
+        .category-card{
+            background:white;
+            border-radius:10px;
+            overflow:hidden;
+            transition:0.3s;
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .category-card:hover{
+            transform:translateY(-5px);
+        }
+
+        .category-img{
+            height:200px;
+            background-size:cover;
+            background-position:center;
+        }
+
+        .category-content{
+            padding:15px;
+            text-align:center;
+        }
+
+        /* Product Grid */
+        .product-grid{
+            margin:40px 0;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:30px;
+        }
+
+        .product-card{
+            background:white;
+            border-radius:10px;
+            overflow:hidden;
+            transition:0.3s;
+            box-shadow:0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .product-card:hover{
+            transform:translateY(-5px);
+        }
+
+        .product-img{
+            height:260px;
+            background-size:cover;
+            background-position:center;
+        }
+
+        .product-content{
+            padding:15px;
+        }
+
+        .product-price{
+            color:#6a11cb;
+            font-weight:700;
+            margin:10px 0;
+        }
+
+        .add-cart{
+            width:100%;
+            border:none;
+            padding:10px;
+            background:#6a11cb;
+            color:white;
+            border-radius:5px;
+            cursor:pointer;
+            font-weight:600;
+            display:block;
+            text-align:center;
+            text-decoration:none;
+        }
+
+        .add-cart:hover{
+            background:#2575fc;
+        }
+
+      
+        footer{
+            background:#333;
+            color:#ccc;
+            padding:40px 0;
+            margin-top:40px;
+        }
+
+        footer p{text-align:center;}
+
+        #login-button:hover,
+        #logout-button:hover,
+        a[href="Cart.html"]:hover {
+            color: #6a11cb;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="session.js"></script>
+    <script src="products-data.js"></script>
+    <script src="cart.js"></script>
+
+    <
+    <header>
+        <div class="container header-flex">
+            <div class="logo">Yabie Premium</div>
+
+            <nav>
+                <ul>
+                    <li><a href="Home Page.html">Home</a></li>
+                    <li><a href="Shop.html">Shop</a></li>
+                    <li><a href="Mens Fashion .html">Men</a></li>
+                    <li><a href="Womens Fashion.html">Women</a></li>
+                    <li><a href="Kids Fashion.html">Kids</a></li>
+                </ul>
+            </nav>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <div id="user-info" style="display: none; color: #6a11cb; font-weight: 500; margin-right: 5px;"></div>
+                <a href="Login.html" id="login-button" style="text-decoration: none; color: #444; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; transition: color 0.3s;" title="Login">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; fill: currentColor;">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </a>
+                <button id="logout-button" onclick="handleLogout()" style="display: none; background: none; border: none; color: #444; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; cursor: pointer; transition: color 0.3s;" title="Logout">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; fill: currentColor;">
+                        <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.59L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                    </svg>
+                </button>
+                <a href="Cart.html" style="text-decoration: none; color: #444; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; position: relative; transition: color 0.3s;" title="Shopping Cart">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; fill: currentColor;">
+                        <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.15.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                    <span style="position: absolute; top: -5px; right: -5px; background: #ff4757; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 12px; display: flex; align-items: center; justify-content: center;">3</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+   
+    <section class="hero">
+        <h1>Women's Fashion</h1>
+    </section>
+
+
+    <div class="container">
+        <div class="section-title">
+            <h2>Women's Categories</h2>
+            <p>Discover elegant and stylish clothing designed for the modern woman.</p>
+        </div>
+
+        
+        
+    </div>
+
+    
+    <div class="container">
+        <div class="section-title">
+            <h2>Popular Women's Products</h2>
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product-card" data-product-id="3">
+                <div class="product-img" style="background-image:url('summerdress.jpg');"></div>
+                <div class="product-content">
+                    <h3>Summer Dress</h3>
+                    <p>Light and breezy perfect for summer</p>
+                    <div class="product-price">Rs. 5999.00</div>
+                    <a href="#" class="add-cart">Add to Cart</a>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="5">
+                <div class="product-img" style="background-image:url('Elegant\ Blouse.jpg');"></div>
+                <div class="product-content">
+                    <h3>Elegant Blouse</h3>
+                    <p>Perfect for office or casual wear</p>
+                    <div class="product-price">Rs. 7490.00</div>
+                    <a href="#" class="add-cart">Add to Cart</a>
+                </div>
+            </div>
+
+            <div class="product-card" data-product-id="5">
+                <div class="product-img" style="background-image:url('skirt.jpg');"></div>
+                <div class="product-content">
+                    <h3>indian skirt</h3>
+                    <p>Comfortable & stylish</p>
+                    <div class="product-price">Rs. 8990.00</div>
+                    <a href="#" class="add-cart">Add to Cart</a>
+                </div>
+            </div>
+
+   <div class="product-card" data-product-id="5">
+                <div class="product-img" style="background-image:url('jogger.jpg');"></div>
+                <div class="product-content">
+                    <h3>jogger pant</h3>
+                    <p>free style</p>
+                    <div class="product-price">Rs. 4490.00</div>
+                    <a href="#" class="add-cart">Add to Cart</a>
+                </div>
+            </div>
+
+
+            
+        </div>
+    </div>
+
+    
+    <footer>
+        <p>© 2025 Yabie Premium — Women's Fashion Collection</p>
+    </footer>
+
+</body>
+</html>
+

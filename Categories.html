@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Yabie Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #6a11cb;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f1f3f5;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 8px;
+            outline: none;
+            width: 200px;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            transition: color 0.3s;
+        }
+
+        .icon-button svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .icon-button:hover {
+            color: #6a11cb;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-img {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .category-content p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .category-btn {
+            display: inline-block;
+            background: #6a11cb;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .category-btn:hover {
+            background: #2575fc;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        #logout-button {
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="session.js"></script>
+    <script src="products-data.js"></script>
+    <script src="cart.js"></script>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <img src="ya.jpg" alt="Yabie Premium Logo" style="height: 50px; width: auto; object-fit: contain;">
+                    <div class="logo-text">Yabie premium</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="Home Page.html">Home</a></li>
+                        <li><a href="Shop.html">Shop</a></li>
+                        <li><a href="Categories.html">Categories</a></li>
+                        <li><a href="New Arrivals.html">New Arrivals</a></li>
+                        <li><a href="Sale.html">Sale</a></li>
+                        <li><a href="About Us.html">About Us</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search products...">
+                        <button class="icon-button" type="button">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="user-info" style="display: none; margin-right: 10px;"></div>
+                    <a href="Login.html" id="login-button" class="icon-button" title="Login">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </a>
+                    <button id="logout-button" class="icon-button" onclick="handleLogout()" style="display: none;" title="Logout">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.59L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                        </svg>
+                    </button>
+                    <a href="Cart.html" class="icon-button" title="Shopping Cart">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.15.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                        <span class="cart-count">3</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Shop by Categories</h1>
+            <p>Browse our wide selection of clothing categories</p>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <div class="container">
+        <div class="category-grid">
+            <a href="Mens Fashion .html" class="category-card">
+                <div class="category-img" style="background-image: url(mens.jpg);"></div>
+                <div class="category-content">
+                    <h3>Men's Fashion</h3>
+                    <p>Trendy and comfortable clothing for men. From casual wear to formal attire.</p>
+                    <span class="category-btn">Shop Now</span>
+                </div>
+            </a>
+            <a href="Womens Fashion.html" class="category-card">
+                <div class="category-img" style="background-image: url(women.jpg);"></div>
+                <div class="category-content">
+                    <h3>Women's Fashion</h3>
+                    <p>Elegant and stylish outfits for women. Discover the latest trends.</p>
+                    <span class="category-btn">Shop Now</span>
+                </div>
+            </a>
+            <a href="Kids Fashion.html" class="category-card">
+                <div class="category-img" style="background-image: url(kids.jpg);"></div>
+                <div class="category-content">
+                    <h3>Kids' Collection</h3>
+                    <p>Fun and comfortable wear for kids. Quality clothing for all ages.</p>
+                    <span class="category-btn">Shop Now</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>yabie premium</h3>
+                    <p>Your one-stop destination for all your fashion needs. Quality products at affordable prices.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="Mens Fashion .html">Men's Clothing</a></li>
+                        <li><a href="Womens Fashion.html">Women's Clothing</a></li>
+                        <li><a href="Kids Fashion.html">Kids' Clothing</a></li>
+                        <li><a href="New Arrivals.html">New Arrivals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="About Us.html">About Us</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>main street, maruthamunai</li>
+                        <li>Email: abaathifahamed@gmail.com</li>
+                        <li>Phone: 0752340293</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Online Clothes Shopping System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
